@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XEReversiLib", "XEReversiLib\XEReversiLib.csproj", "{EB138DA5-52D8-452B-8A7A-AAEADBE41D05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XEReversiLibTest", "XEReversiLib\test\XEReversiLibTest\XEReversiLibTest.csproj", "{8E1396E6-F527-48B8-9923-3072CA5F66FF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EB138DA5-52D8-452B-8A7A-AAEADBE41D05} = {EB138DA5-52D8-452B-8A7A-AAEADBE41D05}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EB138DA5-52D8-452B-8A7A-AAEADBE41D05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB138DA5-52D8-452B-8A7A-AAEADBE41D05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB138DA5-52D8-452B-8A7A-AAEADBE41D05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB138DA5-52D8-452B-8A7A-AAEADBE41D05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E1396E6-F527-48B8-9923-3072CA5F66FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E1396E6-F527-48B8-9923-3072CA5F66FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E1396E6-F527-48B8-9923-3072CA5F66FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E1396E6-F527-48B8-9923-3072CA5F66FF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0FB22F61-7ABE-4E56-A671-9B4C40F06064}
+	EndGlobalSection
+EndGlobal
