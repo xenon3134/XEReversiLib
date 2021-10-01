@@ -15,10 +15,11 @@ namespace XEReversiLib.Core.Common
                 yield return new T[] { items.First() };
                 yield break;
             }
-            foreach (var item in items)
+            for (int i = 0; i < items.Count(); i++)
             {
-                var leftside = new T[] { item };
-                var unused = items.Except(leftside);
+                var leftside = new T[] { items.ElementAt(i) };
+                List<T> unused = new List<T>(items);
+                unused.RemoveAt(i);
                 foreach (var rightside in GetPermutation(unused))
                 {
                     yield return leftside.Concat(rightside).ToArray();

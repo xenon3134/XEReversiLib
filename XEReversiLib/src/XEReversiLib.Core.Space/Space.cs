@@ -87,7 +87,7 @@ namespace XEReversiLib.Core.Space
     }
 
 
-    public class Axis
+    public class Axis : IComparable
     {
         public static readonly Axis X = new Axis("x");
         public static readonly Axis Y = new Axis("y");
@@ -99,6 +99,17 @@ namespace XEReversiLib.Core.Space
             Name = name;
         }
         public string Name { get; }
+
+        public int CompareTo(object obj)
+        {
+            if (obj == null) return 1;
+
+            Axis otherAxis = obj as Axis;
+            if (otherAxis != null)
+                return Name.CompareTo(otherAxis.Name);
+            else
+                throw new ArgumentException("Axis");
+        }
 
         public override bool Equals(object obj)
         {
@@ -134,8 +145,9 @@ namespace XEReversiLib.Core.Space
             AxisVauleMap = new Dictionary<Axis, int>();
             foreach (Axis axis in space.Axes)
             {
+
+                AxisVauleMap.Add(axis, i < values.Length ? values[i] : 0);
                 i++;
-                AxisVauleMap.Add(axis, values.Length <= i ? values[i] : 0);
             }
         }
 
@@ -186,12 +198,12 @@ namespace XEReversiLib.Core.Space
 
         public override int GetHashCode()
         {
-            return AxisVauleMap.GetHashCode();
+            return AxisVauleMap.Select((pair, index) => index * 31 + pair.Value).Aggregate((sum, next) => sum += next);
         }
 
         public override string ToString()
         {
-            return $"Position({string.Join(",", AxisVauleMap.Select((axis, value) => $"{axis}:{value}"))})";
+            return $"Position({string.Join(",", AxisVauleMap.Select(pair => $"{pair.Key.Name}:{pair.Value}"))})";
         }
 
         public static Position operator +(Position a, Position b)
@@ -236,7 +248,7 @@ namespace XEReversiLib.Core.Space
             }
             else
             {
-                return Unit == ((Line)obj).Unit;
+                return Unit.Equals(((Line)obj).Unit);
             }
         }
 
