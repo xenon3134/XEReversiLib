@@ -3,18 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using XEReversiLib.Core.Common;
 
-namespace XEReversiLib.Core.Space
+namespace XEReversiLib.Core
 {
     public class Space
     {
-        public static readonly Space D1 = new Space(new List<Axis> { Axis.X });
-        public static readonly Space D2 = new Space(new List<Axis> { Axis.X, Axis.Y });
-        public static readonly Space D3 = new Space(new List<Axis> { Axis.X, Axis.Y, Axis.Z });
-        public static readonly Space D4 = new Space(new List<Axis> { Axis.W, Axis.X, Axis.Y, Axis.Z });
+        public static readonly Space D1 = new Space(Axis.X);
+        public static readonly Space D2 = new Space(Axis.X, Axis.Y);
+        public static readonly Space D3 = new Space(Axis.X, Axis.Y, Axis.Z);
+        public static readonly Space D4 = new Space(Axis.W, Axis.X, Axis.Y, Axis.Z);
 
-        public Space(List<Axis> axes)
+        public Space(params Axis[] axes)
         {
             Axes = new SortedSet<Axis>(axes);
         }
@@ -25,6 +24,11 @@ namespace XEReversiLib.Core.Space
         public Position GetPosition(params int[] values)
         {
             return new Position(this, values);
+        }
+
+        public Position GetPosition(params (Axis axis, int value)[] points)
+        {
+            return new Position(this, points);
         }
 
         public Line GetLine(params int[] unit)
@@ -81,7 +85,7 @@ namespace XEReversiLib.Core.Space
         {
             List<Axis> newAxes = new List<Axis>(a.Axes);
             newAxes.AddRange(b.Axes);
-            return new Space(newAxes);
+            return new Space(newAxes.ToArray());
         }
 
     }
@@ -145,8 +149,20 @@ namespace XEReversiLib.Core.Space
             AxisVauleMap = new Dictionary<Axis, int>();
             foreach (Axis axis in space.Axes)
             {
-
                 AxisVauleMap.Add(axis, i < values.Length ? values[i] : 0);
+                i++;
+            }
+        }
+
+        public Position(Space space, params (Axis axis, int value)[] points)
+        {
+            Space = space;
+
+            int i = 0;
+            AxisVauleMap = new Dictionary<Axis, int>();
+            foreach (Axis axis in space.Axes)
+            {
+                AxisVauleMap.Add(axis, new List<(Axis axis, int value)>(points).Find(point => point.axis.Equals(axis)).value);
                 i++;
             }
         }
@@ -238,6 +254,12 @@ namespace XEReversiLib.Core.Space
         {
             Unit = unit;
         }
+
+        public Line(Position start, Position next)
+        {
+            Unit = next - start;
+        }
+
         public Position Unit { get; }
 
         public override bool Equals(object obj)

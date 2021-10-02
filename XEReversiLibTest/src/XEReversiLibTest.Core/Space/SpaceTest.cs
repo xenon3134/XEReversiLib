@@ -1,9 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-using XEReversiLib.Core.Space;
+using XEReversiLib.Core;
 
-namespace XEReversiLibTest.Core.SpaceTest
+namespace XEReversiLibTest.Core
 {
     [TestClass]
     public class SpaceTest

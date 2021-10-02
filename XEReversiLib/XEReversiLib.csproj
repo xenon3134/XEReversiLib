@@ -42,12 +42,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="src\XEReversiLib.Core.Board\Board.cs" />
-    <Compile Include="src\XEReversiLib.Core.Cell\Cell.cs" />
-    <Compile Include="src\XEReversiLib.Core.Cell\CellStatus.cs" />
-    <Compile Include="src\XEReversiLib.Core.Common\Utils.cs" />
-    <Compile Include="src\XEReversiLib.Core.Space\Space.cs" />
+    <Compile Include="src\XEReversiLib.Core\Board\Board.cs" />
+    <Compile Include="src\XEReversiLib.Core\Cell\Cell.cs" />
+    <Compile Include="src\XEReversiLib.Core\Cell\CellStatus.cs" />
+    <Compile Include="src\XEReversiLib.Core\Common\Utils.cs" />
+    <Compile Include="src\XEReversiLib.Core\Rule\RuleBook.cs" />
+    <Compile Include="src\XEReversiLib.Core\Space\Space.cs" />
     <Compile Include="src\XEReversiLib.MatchManager\Class1.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
