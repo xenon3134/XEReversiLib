@@ -37,7 +37,7 @@ namespace XEReversiLib.Core
             return CellMap.TryGetValue(position, out cell) ? cell :
                 defaultStatus != null ? Cell.Of(defaultStatus, position) :
                 DefaultStatus != null ? Cell.Of(DefaultStatus, position) :
-                null;
+                throw new Exception("No status is specified.");
         }
 
         public void UpdateCell(ICellStatus status, params int[] postionValues)
@@ -52,7 +52,7 @@ namespace XEReversiLib.Core
 
         public void UpdateCell(ICellStatus status, Position position)
         {
-            Cell cell = GetCell(position);
+            Cell cell = GetCell(position, status);
             cell.Status = status;
             CellMap[position] = cell;
         }
