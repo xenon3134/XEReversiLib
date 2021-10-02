@@ -12,7 +12,7 @@ namespace XEReversiLibTest.Core
         [TestMethod]
         public void TestGetCellRow()
         {
-            Board board = new Board(Space.D2, StandardCellStatus.EMPTY);
+            Board board = Board.CreateStandard();
             board.UpdateCell(StandardCellStatus.PLAYER1, 2, 1);
             board.UpdateCell(StandardCellStatus.PLAYER2, 4, 1);
 
@@ -33,7 +33,7 @@ namespace XEReversiLibTest.Core
         [TestMethod]
         public void TestGetAllUnitCellRows()
         {
-            Board board = new Board(Space.D2, StandardCellStatus.EMPTY);
+            Board board = Board.CreateStandard();
 
             List<Cell> result = board.GetAllUnitCellRows(Space.D2.GetPosition(4, 4), cell => IsEnd(cell)).ToList();
             List<Cell> excepect = new List<Cell> {

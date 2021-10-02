@@ -9,6 +9,11 @@ namespace XEReversiLib.Core
 {
     public class Board
     {
+        public static Board CreateStandard()
+        {
+            return new Board(Space.D2, StandardCellStatus.EMPTY);
+        }
+
         public Board(Space space, ICellStatus defaultStatus = null)
         {
             Space = space;

@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="src\XEReversiLibTest.Core\Board\BoardTest.cs" />
+    <Compile Include="src\XEReversiLibTest.Core\Rule\UnitTest1.cs" />
     <Compile Include="src\XEReversiLibTest.Core\Space\SpaceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

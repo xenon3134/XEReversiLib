@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace XEReversiLib.Core
 {
-    class RuleBook
+    public class RuleBook
     {
 
     }
